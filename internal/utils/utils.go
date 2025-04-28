@@ -15,6 +15,7 @@ func SendTrackUpdate(conn *websocket.Conn, track *models.CurrentlyPlaying) {
 		"artists": GetArtistNames(track),
 		"album":   track.Item.Album.Name,
 		"time":    time.Now().Unix(),
+		"image":   track.Item.Album.Images[0],
 	}
 
 	if err := conn.WriteJSON(update); err != nil {

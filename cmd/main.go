@@ -174,6 +174,11 @@ func (app *App) handleWsCurrentPlaying (w http.ResponseWriter, r *http.Request) 
 			})
 		}
 
+		if track == nil {
+            time.Sleep(5 * time.Second)
+            continue
+        }
+
 		utils.SendTrackUpdate(conn, track)
 		utils.OptimizeUpdateTrack(track)
 	}
